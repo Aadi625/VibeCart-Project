@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>E-Commerce Store</h1>
+
+    <h3>Welcome, {{ username }}</h3>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <div>
+    <a href="/cart">🛍️ Cart</a> |
+    <a href="/orders">📦 Orders</a> |
+    <a href="/logout">🚪 Logout</a>
+</div>
+
+    <hr>
+
+    <form action="/products" method="GET">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search products..."
+        value="{{ search }}"
+    >
+
+    <button type="submit">Search</button>
+
+    <a href="/products">
+        <button type="button">Show All</button>
+    </a>
+
+</form>
+
+<br>
+
+    <h2>Available Products</h2>
+
+    {% if products %}
+
+        <div class="product-grid">
+
+    {% for product in products %}
+
+    <div class="product-card">
+
+        <h3>{{ product.product_name }}</h3>
+
+        <p><strong>₹{{ product.price }}</strong></p>
+
+        <p>Stock: {{ product.stock }}</p>
+
+        <a href="/add_to_cart/{{ product.product_id }}">
+            <button>Add to Cart</button>
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+    {% else %}
+
+        <p>No products available.</p>
+
+    {% endif %}
+
+</body>
+</html>
