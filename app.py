@@ -5,17 +5,17 @@ app = Flask(__name__)
 app.secret_key = "ecommerce_secret_key"
 
 
-# -----------------------------
+
 # HOME
-# -----------------------------
+
 @app.route('/')
 def home():
     return redirect(url_for('login'))
 
 
-# -----------------------------
+
 # REGISTER
-# -----------------------------
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 
@@ -46,9 +46,9 @@ def register():
     return render_template('register.html')
 
 
-# -----------------------------
+
 # LOGIN
-# -----------------------------
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 
@@ -84,9 +84,9 @@ def login():
     return render_template('login.html')
 
 
-# -----------------------------
+
 # LOGOUT
-# -----------------------------
+
 @app.route('/logout')
 def logout():
 
@@ -95,9 +95,9 @@ def logout():
     return redirect(url_for('login'))
 
 
-# -----------------------------
+
 # PRODUCTS PAGE
-# -----------------------------
+
 @app.route('/products')
 def products():
 
@@ -141,9 +141,9 @@ def products():
         search=search
     )
 
-# -----------------------------
+
 # ADD PRODUCT (ADMIN)
-# -----------------------------
+
 @app.route('/add_product', methods=['POST'])
 def add_product():
 
@@ -171,9 +171,9 @@ def add_product():
     return redirect(url_for('products'))
 
 
-# -----------------------------
+
 # ADD TO CART
-# -----------------------------
+
 @app.route('/add_to_cart/<int:product_id>')
 def add_to_cart(product_id):
 
@@ -253,9 +253,9 @@ def add_to_cart(product_id):
     return redirect(url_for('products'))
 
 
-# -----------------------------
+
 # VIEW CART
-# -----------------------------
+
 @app.route('/cart')
 def cart():
 
@@ -300,9 +300,9 @@ def cart():
     )
 
 
-# -----------------------------
+
 # REMOVE FROM CART
-# -----------------------------
+
 @app.route('/remove_cart/<int:cart_id>')
 def remove_cart(cart_id):
 
@@ -325,9 +325,9 @@ def remove_cart(cart_id):
     return redirect(url_for('cart'))
 
 
-# -----------------------------
+
 # PLACE ORDER
-# -----------------------------
+
 @app.route('/place_order')
 def place_order():
 
@@ -444,9 +444,9 @@ def place_order():
 
     return redirect(url_for('orders'))
 
-# -----------------------------
+
 # ORDER DETAILS
-# -----------------------------
+
 
 @app.route('/order_details/<int:order_id>')
 def order_details(order_id):
@@ -486,9 +486,9 @@ def order_details(order_id):
         order_id=order_id
     )
 
-# -----------------------------
+
 # ORDER HISTORY
-# -----------------------------
+
 @app.route('/orders')
 def orders():
 
@@ -521,8 +521,8 @@ def orders():
     )
 
 
-# -----------------------------
+
 # RUN APP
-# -----------------------------
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
