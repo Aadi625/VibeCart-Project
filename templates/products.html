@@ -48,21 +48,13 @@
 <br>
 
     <h2>Available Products</h2>
-
     {% if products %}
-
         <div class="product-grid">
-
     {% for product in products %}
-
     <div class="product-card">
-
         <h3>{{ product.product_name }}</h3>
-
         <p><strong>₹{{ product.price }}</strong></p>
-
         <p>Stock: {{ product.stock }}</p>
-
         <a href="/add_to_cart/{{ product.product_id }}">
             <button>Add to Cart</button>
         </a>
