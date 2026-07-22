@@ -15,9 +15,7 @@
         <a href="/logout">Logout</a>
 
         <hr>
-
         {% if orders %}
-
         <table>
 
             <tr>
@@ -30,23 +28,16 @@
             {% for order in orders %}
 
             <tr>
-
                 <td>{{ order.order_id }}</td>
-
                 <td>{{ order.total_amount }}</td>
-
                 <td>{{ order.status }}</td>
-
                 <td>{{ order.order_date }}</td>
-
             </tr>
-
             {% endfor %}
 
         </table>
 
         {% else %}
-
         <h3>No Orders Found</h3>
 
         <a href="/products">
